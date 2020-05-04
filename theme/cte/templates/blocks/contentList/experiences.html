@@ -20,10 +20,10 @@
                             alt="{{ content.fields.text }}"/> -->
             </div>
 
-            <p class="experience_title">{{content.fields.subTitle}}</p> <!-- {{content.fields.text}} -->
+            <p class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
             <p class="xp_ensavoirplus">en savoir plus</p>
             <div class="experience_text">
-                <p class="xp_subtitle">{{content.fields.subTitle}}</p>
+                <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2}}</p>
                 <p class="xp_text">{{content.fields.summary}}</p>
             </div>
         </div>
