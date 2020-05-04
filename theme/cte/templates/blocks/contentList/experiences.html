@@ -1,3 +1,5 @@
+<!-- template used on Ephata -->
+
 <div ng-controller="ContentListController as contentListCtrl" class="xp_columns_container">
     <!-- MULTIPLE COLUMNS -->
     <div ng-style="contentListCtrl.blockStyle" class="xp_container">
@@ -5,46 +7,51 @@
         <!-- EACH COLUMN -->
         <div    ng-controller="ContentListDetailController as contentListDetailCtrl" 
                 ng-repeat="content in contentListCtrl.contents" 
-                class="col-xs-6 col-xxs-12 xp_column" 
+                ng-switch="content.typeId" 
+                class="col-xs-6 col-xxs-12" 
                 ng-class="contentListCtrl.columns">
 
-            <!-- PICTURE -->
-            <div class="experience-img" ng-style="{'background': 'center / cover no-repeat url('+ rubedo.imageUrl.getUrlByMediaId(content.fields.image) +')'}">
-                <!-- si le contenu a une image, on l'affiche dans la vignette -->
-                <!-- <img class="media-object pull-left" ng-if="content.fields.image"
-                             ng-src="{{ rubedo.imageUrl.getUrlByMediaId(content.fields.image,{width:'400px',height:'266px',mode:'crop'}) }}"
-                             alt="{{ content.fields.text }}"/> -->
-                <!-- si le contenu n'a pas d'image définie, on affiche une image par défaut -->
-                <!-- <img class="media-object pull-left" ng-if="!content.fields.image"
-                            ng-src="{{ rubedo.imageUrl.getUrlByMediaId('57175694c445ecda008c4b31',{width:'400px',height:'266px',mode:'crop'}) }}"
-                            alt="{{ content.fields.text }}"/> -->
+
+            <!-- * DEFAULT TYPE OF COLUMN -->
+            <div ng-switch-default class="xp_column">
+                <!-- PICTURE -->
+                <div class="experience-img" ng-style="{'background': 'center / cover no-repeat url('+ rubedo.imageUrl.getUrlByMediaId(content.fields.image) +')'}">
+                </div>
+
+                <!-- TITLE -->
+                <p ng-if="!content.detailPageUrl" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
+                <p ng-else class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.subTitle || content.fields.titre2}}</a></p>
+
+                <!-- SUMMARY -->
+                <p ng-if="content.fields.summary" class="xp_ensavoirplus">plus...</p>
+                <div ng-if="content.fields.summary" class="experience_text">
+                    <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2}}</p>
+                    <p class="xp_text">{{content.fields.summary}}</p>
+                </div>
             </div>
 
-            <p class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
-            <p class="xp_ensavoirplus">plus...</p>
-            <div class="experience_text">
-                <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2}}</p>
-                <p class="xp_text">{{content.fields.summary}}</p>
-            </div>
+
         </div>
 
     </div>
 
     <script>
-        function retry(fn_cond, fn_exec, max_retries = -5) {
-            if (max_retries == 0) return;
-            if (fn_cond()) return fn_exec();
-            return setTimeout(_ => retry(fn_cond, fn_exec, max_retries-1), 1000);
-        }
-        retry(_ => $('.xp_ensavoirplus').length > 1, function() {
-            console.log("nb xp = ", $('.xp_ensavoirplus').length);
-            $('.xp_ensavoirplus').click(function() {
-                $(this).next().addClass('show-xp-text');
-                $(this).next().click(function() {
-                    $(this).removeClass('show-xp-text');
+        if (typeof window.retryXP !== 'function') {
+            function retryXP(fn_cond, fn_exec, max_retries = -5) {
+                if (max_retries == 0) return;
+                if (fn_cond()) return fn_exec();
+                return setTimeout(_ => retry(fn_cond, fn_exec, max_retries-1), 1000);
+            }
+            retryXP(_ => $('.xp_ensavoirplus').length > 1, function() {
+                console.log("nb xp = ", $('.xp_ensavoirplus').length);
+                $('.xp_ensavoirplus').click(function() {
+                    $(this).next().addClass('show-xp-text');
+                    $(this).next().click(function() {
+                        $(this).removeClass('show-xp-text');
+                    })
                 })
-            })
-        }, -5)
+            }, -5)
+        }
     </script>
 </div>
 
