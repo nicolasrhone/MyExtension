@@ -8,7 +8,8 @@
         <div    ng-controller="ContentListDetailController as contentListDetailCtrl" 
                 ng-repeat="content in contentListCtrl.contents" 
                 ng-switch="content.typeId" 
-                class="col-xs-6 col-xxs-12" 
+                class="col-xs-6 col-xxs-12"
+                style="padding: 0px;" 
                 ng-class="contentListCtrl.columns">
 
 
@@ -19,7 +20,7 @@
                 </div>
 
                 <!-- TITLE -->
-                <p ng-if="!content.detailPageUrl" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
+                <p ng-if="!content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
                 <p ng-else class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a></p>
 
                 <!-- SUMMARY -->
@@ -40,7 +41,7 @@
             function retryXP(fn_cond, fn_exec, max_retries = -5) {
                 if (max_retries == 0) return;
                 if (fn_cond()) return fn_exec();
-                return setTimeout(_ => retry(fn_cond, fn_exec, max_retries-1), 1000);
+                return setTimeout(_ => retryXP(fn_cond, fn_exec, max_retries-1), 1000);
             }
             retryXP(_ => $('.xp_ensavoirplus').length > 1, function() {
                 console.log("nb xp = ", $('.xp_ensavoirplus').length);
