@@ -20,12 +20,12 @@
 
                 <!-- TITLE -->
                 <p ng-if="!content.detailPageUrl" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
-                <p ng-else class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.subTitle || content.fields.titre2}}</a></p>
+                <p ng-else class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a></p>
 
                 <!-- SUMMARY -->
                 <p ng-if="content.fields.summary" class="xp_ensavoirplus">plus...</p>
                 <div ng-if="content.fields.summary" class="experience_text">
-                    <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2}}</p>
+                    <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</p>
                     <p class="xp_text">{{content.fields.summary}}</p>
                 </div>
             </div>
