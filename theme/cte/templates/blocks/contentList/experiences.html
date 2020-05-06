@@ -22,6 +22,7 @@
                 <!-- TITLE -->
                 <p ng-if="!content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
                 <p ng-if="content.fields.propositionReferencee || content.fields.propositionReferenceeInterne" class="experience_title"><a ng-href="{{ content.contentLinkUrl }}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a></p>
+                <p ng-if="content.typeId == '54dc614245205e1d4a8b456b'" class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.text}}</a></p>
 
                 <!-- SUMMARY -->
                 <p ng-if="content.fields.summary" class="xp_ensavoirplus">plus...</p>
