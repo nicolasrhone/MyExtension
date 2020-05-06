@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- TITLE -->
-                <p ng-if="!content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
+                <p ng-if="content.typeId != '54dc614245205e1d4a8b456b' && !content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne" class="experience_title">{{content.fields.subTitle || content.fields.titre2}}</p> <!-- {{content.fields.text}} -->
                 <p ng-if="content.fields.propositionReferencee || content.fields.propositionReferenceeInterne" class="experience_title"><a ng-href="{{ content.contentLinkUrl }}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a></p>
                 <p ng-if="content.typeId == '54dc614245205e1d4a8b456b'" class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.text}}</a></p>
 
@@ -66,10 +66,11 @@
     }
     .xp_container {
         width: 100%;
-        /* max-width: 30cm; */
         margin-bottom: -11rem;
         display: flex;
         justify-content: center;
+        padding-bottom: 11rem;
+        max-height: calc(368px + 28rem);
     }
 
     .xp_col {
@@ -78,6 +79,7 @@
 
     .xp_column {
         padding: 8px;
+        max-height: 600px;
     }
 
     .experiences_back {
@@ -126,6 +128,9 @@
         box-shadow: inset 0 -1px 0 hsl(224, 28%, 77%);
         letter-spacing: 1px;
         font-weight: normal;
+    }
+    .experience_title a:hover {
+        background-color: hsla(240, 28%, 89%, 1);
     }
 
     .xp_ensavoirplus {
