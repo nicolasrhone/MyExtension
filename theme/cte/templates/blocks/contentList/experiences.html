@@ -8,7 +8,7 @@
         <div    ng-controller="ContentListDetailController as contentListDetailCtrl" 
                 ng-repeat="content in contentListCtrl.contents" 
                 ng-switch="content.typeId" 
-                class="col-xs-6 col-xxs-12"
+                class="xp_col"
                 style="padding: 0px;" 
                 ng-class="contentListCtrl.columns">
 
@@ -67,6 +67,11 @@
         width: 100%;
         max-width: 30cm;
         margin-bottom: -11rem;
+        display: flex;
+    }
+
+    .xp_col {
+        max-width: 300px;
     }
 
     .xp_column {
@@ -114,6 +119,13 @@
         font-weight: bold;
         letter-spacing: 1px;
     }
+
+    .experience_title a {
+        box-shadow: inset 0 -1px 0 hsl(224, 28%, 77%);
+        letter-spacing: 1px;
+        font-weight: normal;
+    }
+
     .xp_ensavoirplus {
         cursor: pointer;
         font-size: 1.1rem;
