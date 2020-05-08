@@ -14,7 +14,7 @@
 
 
             <!-- * DEFAULT TYPE OF COLUMN -->
-            <div ng-switch-default class="xp_column">
+            <div ng-switch-default class="xp_column" ng-class="{'survol': block.code != 'clickplus'}">
                 <!-- PICTURE -->
                 <div class="experience-img" ng-style="{'background': 'center / cover no-repeat url('+ rubedo.imageUrl.getUrlByMediaId(content.fields.image) +')'}">
                 </div>
@@ -25,7 +25,7 @@
                 <p ng-if="content.typeId == '54dc614245205e1d4a8b456b'" class="experience_title"><a ng-href="{{ content.detailPageUrl }}">{{content.fields.text}}</a></p>
 
                 <!-- SUMMARY -->
-                <p ng-if="content.fields.summary" class="xp_ensavoirplus">plus...</p>
+                <p ng-if="block.code == 'clickplus' && content.fields.summary" class="xp_ensavoirplus">plus...</p>
                 <div ng-if="content.fields.summary" class="experience_text">
                     <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</p>
                     <p class="xp_text">{{content.fields.summary}}</p>
@@ -80,6 +80,15 @@
     .xp_column {
         padding: 8px;
         max-height: 600px;
+    }
+
+    .xp_column.survol:hover .experience_text {
+        color: red;
+        margin: 3px;
+        width: calc(100% - 6px);
+        transform: translateY(-100%);
+        opacity: 1;
+        transition: transform .25s ease-in, -webkit-transform .25s ease-in, opacity 0.1s ease-in;
     }
 
     .experiences_back {
