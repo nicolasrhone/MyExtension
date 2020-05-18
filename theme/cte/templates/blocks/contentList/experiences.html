@@ -27,7 +27,10 @@
                 <!-- SUMMARY -->
                 <p ng-if="block.code == 'clickplus' && content.fields.summary" class="xp_ensavoirplus">plus...</p>
                 <div ng-if="content.fields.summary" class="experience_text">
-                    <p class="xp_subtitle">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</p>
+                    <p class="xp_subtitle">
+                        <a ng-if="content.fields.propositionReferencee || content.fields.propositionReferenceeInterne" ng-href="{{content.contentLinkUrl}}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a>
+                        <span ng-if="!content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</span>
+                    </p>
                     <p class="xp_text">{{content.fields.summary}}</p>
                 </div>
             </div>
