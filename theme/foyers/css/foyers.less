@@ -187,6 +187,43 @@ width: 90%;
 				float: left; font-size: 2em; margin-top: -0.1em;
 		}
 }
+
+
+/* BANDEAU INFO MISE EN AVANT PROMO */
+
+#info_promo {
+	position: absolute;
+    top: 12rem;
+    width: 96vw;
+    padding-left: 2vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    z-index: 4;
+}
+#info_promo > div {
+	background: hsla(23, 95%, 56%, 0.88);
+	font-family: Montserrat;
+	color: white;
+	font-size: 2rem;
+	max-width: 650px;
+	padding: 8px;
+	text-align: center;
+	box-shadow: #21221fbd 0px 6px 8px 0px;
+}
+
+#info_promo > div > div {
+	padding: 4rem 9rem;
+    border: 1px solid #ffffff6e;
+}
+
+@media screen and (max-width: 640px) {
+	#info_promo > div > div {
+		padding: 2rem;
+	}
+}
+
+
 /*PRESENTATION MOBILE*/
 .nav-tabs li{
 		background-color: @bg; 

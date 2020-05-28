@@ -151,7 +151,7 @@ class BartimeeResource extends AbstractResource
         // == 2. == On lance la requête
         // =======================================================================================
         try {
-            $result = $this->getContentsCollection()->getOnlineList($filters["filter"], $filters["sort"], 0, 1000, false);
+            $result = $this->getContentsCollection()->getOnlineList($filters["filter"], $filters["sort"], 0, 7000, false);
         } catch (Exception $e) {
             file_put_contents('/var/www/html/rubedo/log/custom_debug.log', date("Y-m-d H:i") . " -- BartimeeResource.php > contents query execution ERROR ".($e->getMessage())." \n", FILE_APPEND | LOCK_EX);
             return [
