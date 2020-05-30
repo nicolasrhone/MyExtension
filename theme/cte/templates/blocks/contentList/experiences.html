@@ -26,10 +26,15 @@
 
                 <!-- SUMMARY -->
                 <p ng-if="block.code == 'clickplus' && content.fields.summary" class="xp_ensavoirplus">plus...</p>
-                <div ng-if="content.fields.summary" class="experience_text">
+                <div ng-if="content.fields.summary || content.typeId == '54dc614245205e1d4a8b456b'" class="experience_text">
                     <p class="xp_subtitle">
                         <a ng-if="content.fields.propositionReferencee || content.fields.propositionReferenceeInterne" ng-href="{{content.contentLinkUrl}}">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</a>
                         <span ng-if="!content.fields.propositionReferencee && !content.fields.propositionReferenceeInterne">{{content.fields.subTitle || content.fields.titre2 || content.fields.text}}</span>
+                        <a ng-if="content.typeId == '54dc614245205e1d4a8b456b'" ng-href="{{ content.detailPageUrl }}">{{content.fields.text}}</a>
+                    </p>
+                    <p ng-if="content.fields.dateDebut || content.fields.complement_date" class="xp_date">
+                        <time ng-if="content.fields.dateDebut">{{content.fields.dateDebut|dateRange:content.fields.dateFin:'short':'':'':rubedo.current.page.locale }} <span ng-if="content.fields.complement_date">{{content.fields.complement_date}}</span></time>
+                        <time ng-if="!content.fields.dateDebut && content.fields.complement_date">{{content.fields.complement_date}}</time>
                     </p>
                     <p class="xp_text">{{content.fields.summary}}</p>
                 </div>
