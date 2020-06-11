@@ -139,6 +139,15 @@
                                         <div class="col-sm-8"><input type="text" id="prenom" ng-model="don.user.surname" name="surname" required></div>
                                 </div>
                                 <div class="row">
+                                        <div class="col-sm-4"><label for="sexe" class="label_style">{{rubedo.translate("Block.Inscription.Sexe")}}*</label></div>
+                                        <div class="col-sm-8">
+                                            <input type="radio"  name="sexe" id="H" value="H" ng-model="don.user.sex" required>
+                                                <label for="H" class="sexe_label">{{rubedo.translate("Block.Inscription.Sexe.H")}}</label>	
+                                            <input type="radio"  name="sexe" id="F" value="F" ng-model="don.user.sex">
+                                                <label for="F" class="sexe_label">{{rubedo.translate("Block.Inscription.Sexe.F")}}</label>
+                                        </div>
+                                    </div>
+                                <div class="row">
                                         <div class="col-sm-4"><label for="email" class="label_style">{{rubedo.translate("Block.Inscription.Email")}}*</label></div>
                                         <div class="col-sm-8"><input type="email" id="email" name="email"  ng-model="don.user.email" placeholder="user@mydomain.com" required></div>
                                 </div>
