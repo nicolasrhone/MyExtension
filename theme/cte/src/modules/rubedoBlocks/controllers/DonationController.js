@@ -235,6 +235,7 @@ angular.module("rubedoBlocks").lazy.controller("DonationController",['$scope','R
                         var payload = {
                             nom:$scope.don.user.nom,
                             prenom: $scope.don.user.surname,
+                            sex: $scope.don.user.sex,
                             email:$scope.don.user.email,
                             montant:$scope.don.montant=='autre'?$scope.don.montant_autre:$scope.don.montant,
                             proposition:$scope.don.projet,
