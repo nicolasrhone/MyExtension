@@ -194,9 +194,10 @@
 					<div class="col-sm-12" ng-if="contentDetailCtrl.propDate!='passee'
 						&& (contentDetailCtrl.content.fields.inscriptionState.inscriptionState == 'ouverte'
 						|| contentDetailCtrl.content.fields.inscriptionState.inscriptionState == 'preinscription'
-						||  contentDetailCtrl.content.fields.inscriptionState.inscriptionState == 'attente')">
+						|| contentDetailCtrl.content.fields.inscriptionState.inscriptionState == 'attente'
+						|| contentDetailCtrl.content.fields.inscriptionState.inscriptionState == 'service-only')">
 						<!--si un seul public accueilli-->
-						<div class="col-sm-6" ng-if="(contentDetailCtrl.content.fields.publics).length==1 && contentDetailCtrl.content.fields.publics[0]">
+						<div class="col-sm-6" ng-if="contentDetailCtrl.content.fields.inscriptionState.inscriptionState != 'service-only' && (contentDetailCtrl.content.fields.publics).length==1 && contentDetailCtrl.content.fields.publics[0]">
 							<a href="#bottom">
 							<div class="button rouge cursor-as-pointer"  ng-click="contentDetailCtrl.content.public = contentDetailCtrl.content.fields.publics[0];contentDetailCtrl.content.service = false; contentDetailCtrl.showInscription = true">
 								{{rubedo.translate("Inscription", "S'inscrire")}}
@@ -204,7 +205,7 @@
 							</a>
 						</div>
 						<!--si un plusieurs types de public accueillis-->
-						<div ng-if="(contentDetailCtrl.content.fields.publics).length>1" class="col-sm-6 text-center">
+						<div ng-if="contentDetailCtrl.content.fields.inscriptionState.inscriptionState != 'service-only' && (contentDetailCtrl.content.fields.publics).length>1" class="col-sm-6 text-center">
 							<div class="button rouge cursor-as-pointer"   style="margin-bottom:12px" >{{rubedo.translate("Block.Inscription.Inscrire.Comme","S'inscrire comme")}}</div>
 							        <!--Type de public -->
 								<div ng-repeat="public in contentDetailCtrl.content.fields.publics track by $index" class="text-center">
