@@ -125,7 +125,8 @@
 					</div>
 					<div class="col-xs-12 col-sm-8 ">
 						<rubedo-field  field =  "{{contentDetailCtrl.getFieldByName('paf_text')}}" ></rubedo-field><!--Description-->
-						<span class="help-block" style="font-style: italic; margin-top:-20px;">{{rubedo.translate( "Block.Inscription.Paf.Problemes","L'argent ne doit pas être un obstacle, contactez-nous en cas de difficulté")}}</span>
+						<span ng-if="contentDetailCtrl.content.id != '5fa6a203396588440f3f7097'" 
+						class="help-block" style="font-style: italic; margin-top:-20px;">{{rubedo.translate( "Block.Inscription.Paf.Problemes","L'argent ne doit pas être un obstacle, contactez-nous en cas de difficulté")}}</span>
 					</div>
 					
 				</div>
